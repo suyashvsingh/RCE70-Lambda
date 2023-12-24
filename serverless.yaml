@@ -1,0 +1,59 @@
+service: RCE70
+
+provider:
+    name: aws
+    region: us-east-1
+    ecr:
+        images:
+            exe-c:
+                path: ./ExecuteC
+                file: Dockerfile
+            exe-cpp:
+                path: ./ExecuteCPP
+                file: Dockerfile
+            exe-java:
+                path: ./ExecuteJava
+                file: Dockerfile
+            exe-javascript:
+                path: ./ExecuteJavaScript
+                file: Dockerfile
+            exe-python:
+                path: ./ExecutePython
+                file: Dockerfile
+
+functions:
+    exe-c:
+        image:
+            name: exe-c
+        events:
+            - http:
+                  path: /api/v1/code/exe-c
+                  method: post
+    exe-cpp:
+        image:
+            name: exe-cpp
+        events:
+            - http:
+                  path: /api/v1/code/exe-cpp
+                  method: post
+    exe-java:
+        image:
+            name: exe-java
+        events:
+            - http:
+                  path: /api/v1/code/exe-java
+                  method: post
+    exe-javascript:
+        image:
+            name: exe-javascript
+        events:
+            - http:
+                  path: /api/v1/code/exe-javascript
+                  method: post
+    exe-python:
+        image:
+            name: exe-python
+        events:
+            - http:
+                  path: /api/v1/code/exe-python
+                  method: post
